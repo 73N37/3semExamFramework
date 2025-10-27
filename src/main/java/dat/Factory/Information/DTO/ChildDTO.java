@@ -9,7 +9,7 @@ public class ChildDTO extends BaseDTO
     public ChildDTO(dat.Factory.Information.Entity.ChildEntity entity)
             throws dat.Factory.Exception.DTOException
     {
-        super(entity);
+        super(entity.getId());
         if (entity == null) {
                 throw new dat.Factory.Exception.DTOException(dat.Factory.Exception.ErrorType.NOT_ACCEPTABLE,        // Throws Exception if parameter (entity) is null
                         "Entity is NOT allowed to be null");

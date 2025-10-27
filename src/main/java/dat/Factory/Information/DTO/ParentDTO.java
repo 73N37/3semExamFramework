@@ -1,15 +1,19 @@
 package dat.Factory.Information.DTO;
 
-@lombok.Setter
+
 @lombok.Getter
 public class ParentDTO extends BaseDTO
 {
-    private final java.io.Serializable  grandParentId;
-    private final java.lang.Object      field1;
+    private final java.io.Serializable                              grandParentId;
+    private final dat.Factory.Information.DTO.GrandParentDTO        grandParent;
+    private final java.lang.Object                                  field1;
 
     public ParentDTO(dat.Factory.Information.Entity.ParentEntity entity)
             throws dat.Factory.Exception.DTOException
     {
+        super(entity.getId());
+
+        grandParent = dat.Factory.Information.BaseMapper.toGrandParentDTO(entity.getGrandParent());
         if (entity == null)
         {
             throw new dat.Factory.Exception.DTOException(dat.Factory.Exception.ErrorType.NOT_ACCEPTABLE,
@@ -25,16 +29,23 @@ public class ParentDTO extends BaseDTO
         this.grandParentId  = entity.getGrandParent().getId();
     }
 
-    public ParentDTO(java.io.Serializable   id,
-                     java.io.Serializable   grandParentId,
-                     java.lang.Object       field1)
+    public ParentDTO(java.io.Serializable                       id,
+                     dat.Factory.Information.DTO.GrandParentDTO grandParent,
+                     java.lang.Object                           field1)
     {
         this.id             = id;
-        this.grandParentId  = grandParentId;
+        this.grandParent    = grandParent;
+        this.grandParentId  = grandParent.getId();
         this.field1         = field1;
     }
 
-
+    public ParentDTO(java.io.Serializable                       id,
+                     dat.Factory.Information.DTO.GrandParentDTO grandParent)
+    {
+        this.id             = id;
+        this.grandParent    = grandParent;
+        this.grandParentId  = grandParent.getId();
+    }
 
     // Convert to GrandParentDTO by using the provided GrandParentEntity (delegates to GrandParentDTO ctor)
     public GrandParentDTO
@@ -45,3 +56,4 @@ public class ParentDTO extends BaseDTO
     }
 
 }
+

@@ -1,7 +1,8 @@
 package dat.Factory.Information;
 
 
-
+import dat.Factory.Information.DTO.GrandParentDTO;
+import dat.Factory.Information.Entity.GrandParentEntity;
 
 public final class BaseMapper {
     private BaseMapper() {}
@@ -58,8 +59,9 @@ public final class BaseMapper {
             throws  dat.Factory.Exception.EntityException
     {
         if (dto == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.FORBIDDEN, "parameter (dto) is NOT allowed to be null (toParentEntity)");
-        try {
-            dat.Factory.Information.Entity.GrandParentEntity grandParent = (dto.getGrandParentDTO() != null) ? toGrandParentEntity(dto.getGrandParentDTO()) : null;
+        try
+        {
+            dat.Factory.Information.Entity.GrandParentEntity grandParent = (dto.getGrandParent() != null) ? toGrandParentEntity(dto.getGrandParent()) : null;
             if (grandParent == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.NOT_ACCEPTABLE, "Parent->Entity conversion requires grandParent DTO");
             dat.Factory.Information.Entity.ParentEntity parent = new dat.Factory.Information.Entity.ParentEntity(grandParent, java.util.Collections.emptySet());
             // copy scalar fields defensively if needed (setField1 etc.)
@@ -73,6 +75,32 @@ public final class BaseMapper {
             throw (ex instanceof dat.Factory.Exception.EntityException) ?
                     (dat.Factory.Exception.EntityException) ex
                     : new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.BAD_REQUEST, "Error converting ParentDTO to ParentEntity", ex);
+        }
+    }
+
+    public static dat.Factory.Information.DTO.ParentDTO
+    toParentDTO(dat.Factory.Information.Entity.ParentEntity entity)
+        throws dat.Factory.Exception.DTOException
+    {
+        dat.Factory.Information.DTO.ParentDTO result = null;
+        if (entity == null) throw new dat.Factory.Exception.DTOException(dat.Factory.Exception.ErrorType.FORBIDDEN, "parameter (entity) is NOT allowed to be null (toParentDTO)");
+        try
+        {
+            dat.Factory.Information.Entity.GrandParentEntity grandParent = entity.getGrandParent();
+            if (grandParent != null)
+            {
+                result = new dat.Factory.Information.DTO.ParentDTO(grandParent.getId(), toGrandParentDTO(grandParent));
+            }
+            if (result == null) {
+                throw new dat.Factory.Exception.DTOException(dat.Factory.Exception.ErrorType.FORBIDDEN,
+                                                            "return value (result) is NOT allowed to be null (toParentDTO)");
+            }
+            return result;
+        } catch (RuntimeException ex)
+        {
+            throw new dat.Factory.Exception.DTOException(dat.Factory.Exception.ErrorType.FORBIDDEN,
+                                                        "An error happen while trying to convert (toParentDTO)",
+                                                        ex);
         }
     }
 
@@ -107,22 +135,48 @@ public final class BaseMapper {
         }
     }
 
-    public static dat.Factory.Information.Entity.GrandParentEntity toGrandParentEntity(dat.Factory.Information.DTO.GrandParentDTO dto) throws dat.Factory.Exception.EntityException {
+    public static dat.Factory.Information.Entity.GrandParentEntity
+    toGrandParentEntity(dat.Factory.Information.DTO.GrandParentDTO dto)
+            throws dat.Factory.Exception.EntityException {
         if (dto == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.FORBIDDEN, "parameter (dto) is NOT allowed to be null (toGrandParentEntity)");
-        try {
+        try
+        {
             dat.Factory.Information.Entity.GrandParentEntity grandParent = new dat.Factory.Information.Entity.GrandParentEntity(new java.util.HashSet<>());
             // set scalar fields...
-            if (dto.getParentSetDTO() != null) {
-                for (dat.Factory.Information.DTO.ParentDTO parentDTO : dto.getParentSetDTO()) {
+            if (dto.getParentSet() != null)
+            {
+                for (dat.Factory.Information.DTO.ParentDTO parentDTO : dto.getParentSet())
+                {
                     dat.Factory.Information.Entity.ParentEntity parent = toParentEntity(parentDTO);
                     grandParent.getParentSet().add(parent);
                 }
             }
             return grandParent;
-        } catch (RuntimeException ex) {
+        } catch (RuntimeException ex)
+        {
             throw new dat.Factory.Exception.EntityException(  dat.Factory.Exception.ErrorType.BAD_REQUEST,
                                         "Error converting GrandParentDTO to GrandParentEntity",
                                         ex);
+        }
+    }
+
+    public static GrandParentDTO
+    toGrandParentDTO(GrandParentEntity entity)
+            throws dat.Factory.Exception.DTOException
+    {
+        if (entity == null) throw new dat.Factory.Exception.DTOException(dat.Factory.Exception.ErrorType.FORBIDDEN, "parameter (entity) is NOT allowed to be null (toGrandParentDTO)");
+        try
+        {
+            dat.Factory.Information.DTO.GrandParentDTO grandParent = new dat.Factory.Information.DTO.GrandParentDTO(entity);
+            for (dat.Factory.Information.Entity.ParentEntity parentEntity : entity.getParentSet())
+            {
+                dat.Factory.Information.DTO.ParentDTO parent = toParentDTO(parentEntity);
+                grandParent.getParentSet().add(parent);
+            }
+            return grandParent;
+        } catch (RuntimeException ex)
+        {
+            throw new dat.Factory.Exception.DTOException()
         }
     }
 }

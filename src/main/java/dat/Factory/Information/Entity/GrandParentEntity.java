@@ -3,6 +3,7 @@ package dat.Factory.Information.Entity;
 
 import dat.Factory.Information.UserType;
 
+@lombok.Setter
 @lombok.Getter                                                                                                          // Creates get-methods for each Field
 @jakarta.persistence.Entity                                                                                             // Marks this class as an JPA entity (persistable)
 @jakarta.persistence.Table(name = "grandparent")                                                                        // Assigns table-name: grandparent

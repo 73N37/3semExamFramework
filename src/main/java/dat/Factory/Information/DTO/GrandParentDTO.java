@@ -1,6 +1,5 @@
 package dat.Factory.Information.DTO;
 
-@lombok.Setter
 @lombok.Getter
 public class GrandParentDTO extends BaseDTO
 {
@@ -9,6 +8,7 @@ public class GrandParentDTO extends BaseDTO
     public GrandParentDTO(dat.Factory.Information.Entity.GrandParentEntity entity)
             throws dat.Factory.Exception.DTOException
     {
+        super(entity.getId());
         if ( entity == null )
         {
             throw new dat.Factory.Exception.DTOException(dat.Factory.Exception.ErrorType.NOT_ACCEPTABLE,

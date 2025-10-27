@@ -9,12 +9,12 @@ public class BaseDTO {
     protected java.io.Serializable grandParentId;
 
     protected java.util.Set<ChildDTO> childSet = new java.util.HashSet<>();
-    protected java.util.Set<ParentDTO> parentSetDTO = new java.util.HashSet<>();
+    protected java.util.Set<ParentDTO> parentSet = new java.util.HashSet<>();
 
     // ensure collections are never null
     protected BaseDTO() {
         this.childSet = new java.util.HashSet<>();
-        this.parentSetDTO = new java.util.HashSet<>();
+        this.parentSet = new java.util.HashSet<>();
     }
 
     // ID-only constructor

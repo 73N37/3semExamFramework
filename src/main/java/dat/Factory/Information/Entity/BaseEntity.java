@@ -3,7 +3,7 @@ package dat.Factory.Information.Entity;
 @lombok.Getter
 @lombok.Setter
 @jakarta.persistence.MappedSuperclass
-public abstract class BaseEntity {
+public class BaseEntity {
     @jakarta.persistence.Id
     @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)
     protected java.io.Serializable id;

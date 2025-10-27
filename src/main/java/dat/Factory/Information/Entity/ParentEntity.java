@@ -1,5 +1,6 @@
 package dat.Factory.Information.Entity;
 
+@lombok.Setter
 @lombok.Getter                                                                                                          //  Creates get-methods for each Field
 @jakarta.persistence.Entity                                                                                             //  Marks this class as an JPA entity (persistable)
 @jakarta.persistence.Table(name = "parent")                                                                             //  Assigns table-name: parent
