@@ -1,4 +1,4 @@
-package T3N3T.Factory.Controller;
+package dat.Factory.Controller;
 
 public class ErrorResponse {
     private int status;

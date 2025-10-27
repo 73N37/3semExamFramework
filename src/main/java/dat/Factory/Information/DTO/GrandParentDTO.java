@@ -1,16 +1,16 @@
-package T3N3T.Factory.Information.DTO;
+package dat.Factory.Information.DTO;
 
 @lombok.Getter
 public class GrandParentDTO extends BaseDTO
 {
     private final java.lang.Object      field1;
 
-    public GrandParentDTO(T3N3T.Factory.Information.Entity.GrandParentEntity entity)
-            throws T3N3T.Factory.Exception.DTOException
+    public GrandParentDTO(dat.Factory.Information.Entity.GrandParentEntity entity)
+            throws dat.Factory.Exception.DTOException
     {
         if ( entity == null )
         {
-            throw new T3N3T.Factory.Exception.DTOException(T3N3T.Factory.Exception.ErrorType.NOT_ACCEPTABLE,
+            throw new dat.Factory.Exception.DTOException(dat.Factory.Exception.ErrorType.NOT_ACCEPTABLE,
                     "entity is NOT allowed to be null");
         }
         this.id     = entity.getId();
@@ -25,8 +25,8 @@ public class GrandParentDTO extends BaseDTO
     }
 
     // Convert to ChildDTO by using the provided ChildEntity (delegates to ChildDTO ctor)
-    public ChildDTO toChildDTO(T3N3T.Factory.Information.Entity.ChildEntity childEntity)
-            throws T3N3T.Factory.Exception.DTOException
+    public ChildDTO toChildDTO(dat.Factory.Information.Entity.ChildEntity childEntity)
+            throws dat.Factory.Exception.DTOException
     {
         return new ChildDTO( childEntity );
     }

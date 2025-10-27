@@ -1,4 +1,4 @@
-package T3N3T.Factory.Information.DTO;
+package dat.Factory.Information.DTO;
 
 public abstract class BaseDTO {
     protected java.io.Serializable id;

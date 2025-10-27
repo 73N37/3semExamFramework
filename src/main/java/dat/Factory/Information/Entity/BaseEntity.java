@@ -1,4 +1,4 @@
-package T3N3T.Factory.Information.Entity;
+package dat.Factory.Information.Entity;
 
 public abstract class BaseEntity
 {

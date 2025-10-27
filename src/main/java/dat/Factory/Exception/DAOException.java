@@ -1,8 +1,8 @@
-package T3N3T.Factory.Exception;
+package dat.Factory.Exception;
 
-public class DAOException extends T3N3T.Factory.Exception.ApiException
+public class DAOException extends dat.Factory.Exception.ApiException
 {
-    public DAOException(T3N3T.Factory.Exception.ErrorType errorType, String msg, Throwable cause)
+    public DAOException(dat.Factory.Exception.ErrorType errorType, String msg, Throwable cause)
     {
         super( errorType, msg, cause);
     }

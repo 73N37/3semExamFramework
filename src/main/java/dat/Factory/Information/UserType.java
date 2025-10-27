@@ -1,4 +1,4 @@
-package T3N3T.Factory.Information;
+package dat.Factory.Information;
 
 public enum UserType
 {

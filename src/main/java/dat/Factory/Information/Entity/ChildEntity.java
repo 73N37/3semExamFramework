@@ -1,4 +1,4 @@
-package T3N3T.Factory.Information.Entity;
+package dat.Factory.Information.Entity;
 
 
 @lombok.Getter                                                                                                          //  Creates get-methods to ALL fields within this class
@@ -34,7 +34,7 @@ public class ChildEntity extends BaseEntity
 
     public ParentEntity
     toParent()
-            throws T3N3T.Factory.Exception.DTOException
+            throws dat.Factory.Exception.DTOException
     {
         java.util.Set<ChildEntity> childToParent = new java.util.HashSet<>();
         childToParent.add(this);

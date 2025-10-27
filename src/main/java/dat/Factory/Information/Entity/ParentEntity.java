@@ -1,4 +1,4 @@
-package T3N3T.Factory.Information.Entity;
+package dat.Factory.Information.Entity;
 
 @lombok.Getter                                                                                                          //  Creates get-methods for each Field
 @jakarta.persistence.Entity                                                                                             //  Marks this class as an JPA entity (persistable)
@@ -41,12 +41,12 @@ public class ParentEntity extends BaseEntity
         this.childSet    = childrenToParent;
     }
 
-    public T3N3T.Factory.Information.Entity.ChildEntity
-    addChild(T3N3T.Factory.Information.Entity.ChildEntity entity)
-            throws T3N3T.Factory.Exception.EntityException
+    public dat.Factory.Information.Entity.ChildEntity
+    addChild(dat.Factory.Information.Entity.ChildEntity entity)
+            throws dat.Factory.Exception.EntityException
     {
         if ( entity == null ){
-            throw new T3N3T.Factory.Exception.EntityException(T3N3T.Factory.Exception.ErrorType.NOT_ACCEPTABLE,
+            throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.NOT_ACCEPTABLE,
                     "parameter (ChildEntity) is NOT allowed to be null");
         }
         entity.setParent(this);
@@ -56,7 +56,7 @@ public class ParentEntity extends BaseEntity
 
     public GrandParentEntity
     toGrandParent()
-            throws T3N3T.Factory.Exception.DTOException
+            throws dat.Factory.Exception.DTOException
     {
         java.util.Set<ParentEntity> childToGrandParent = new java.util.HashSet<>();
         childToGrandParent.add(this);

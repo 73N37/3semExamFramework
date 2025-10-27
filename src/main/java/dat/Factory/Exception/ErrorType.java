@@ -1,4 +1,4 @@
-package T3N3T.Factory.Exception;
+package dat.Factory.Exception;
 
 public enum ErrorType {
     BAD_REQUEST(400, "Bad request"),
