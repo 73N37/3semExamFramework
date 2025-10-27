@@ -10,9 +10,15 @@ import io.javalin.http.Context;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Main {
+public class Main
+{
 
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         ApplicationConfig.startServer(7070);
+
+        dat.Factory.Information.DTO.BaseDTO dto = new dat.Factory.Information.DTO.BaseDTO(1,1);
+        dat.Factory.Information.Entity.BaseEntity entity = new dat.Factory.Information.Entity.BaseEntity();
+
     }
 }

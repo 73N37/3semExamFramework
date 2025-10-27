@@ -4,12 +4,13 @@ package dat.Factory.Information.DTO;
 public class ChildDTO extends BaseDTO
 {
     private final Object                field1;
-    private final java.io.Serializable  parentId;
+    //private final java.io.Serializable  parentId;
 
     public ChildDTO(dat.Factory.Information.Entity.ChildEntity entity)
             throws dat.Factory.Exception.DTOException
     {
-            if (entity == null) {
+        super(entity);
+        if (entity == null) {
                 throw new dat.Factory.Exception.DTOException(dat.Factory.Exception.ErrorType.NOT_ACCEPTABLE,        // Throws Exception if parameter (entity) is null
                         "Entity is NOT allowed to be null");
             }
@@ -26,8 +27,7 @@ public class ChildDTO extends BaseDTO
                     java.io.Serializable    parentId,
                     Object                  field1)
     {
-        this.id         = id;
-        this.parentId   = parentId;
+        super(id, parentId);
         this.field1     = field1;
     }
 

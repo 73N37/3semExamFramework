@@ -56,7 +56,7 @@ public class DAO
         try (jakarta.persistence.EntityManager em = emf.createEntityManager())
         {
             log.debug("Attempting retrieve an entity from database with ID={}", id);
-            dat.Factory.Information.Entity.BaseEntity entity = em.find(entityClass, id);
+            dat.Factory.Information.Entity.BaseEntity entity = em.find(getEntityClass(), id);
             log.debug("Successfully retrieved and entity from the database");
             return entity;
         } catch (RuntimeException e)
