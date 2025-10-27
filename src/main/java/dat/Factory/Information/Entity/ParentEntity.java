@@ -5,8 +5,6 @@ package dat.Factory.Information.Entity;
 @jakarta.persistence.Table(name = "parent")                                                                             //  Assigns table-name: parent
 public class ParentEntity extends BaseEntity
 {
-    @jakarta.persistence.Id                                                                                             //  Marks this field as the primary key for JPA entity (em.find)
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)                         //  Uses database for (increment) primary key generation
     @jakarta.persistence.Column(name    = "parent_id",                                                                  //  Assigns column-name: parent_id (for parent table)
                                 nullable= false,                                                                        //  Enforces that the database entry MUST NEVER be null
                                 unique  = true)                                                                         //  Enforces that the database entry MUST NEVER be identical to an existing entry

@@ -1,5 +1,6 @@
 package dat.Factory.Information.DTO;
 
+@lombok.Setter
 @lombok.Getter
 public class ParentDTO extends BaseDTO
 {

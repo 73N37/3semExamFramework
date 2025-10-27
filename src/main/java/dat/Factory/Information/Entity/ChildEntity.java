@@ -1,13 +1,11 @@
 package dat.Factory.Information.Entity;
 
-
-@lombok.Getter                                                                                                          //  Creates get-methods to ALL fields within this class
+@lombok.Getter
+@lombok.Setter
 @jakarta.persistence.Entity                                                                                             //  Marks this class as an JPA entity (persistable)
 @jakarta.persistence.Table(name = "child")                                                                              //  Assigns table-name: child
 public class ChildEntity extends BaseEntity
 {
-    @jakarta.persistence.Id                                                                                             //  Marks this field as the primary key for JPA entity (em.find)
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)                         //  Uses database for (increment) primary key generation
     @jakarta.persistence.Column(name        = "child_id",                                                               //  Assigns a column-name: child_id (for the child table)
                                 nullable    = false,                                                                    //  Enforces that the database entry MUST NEVER be null
                                 unique      = true)                                                                     //  Enforces that the database entry MUST NEVER be identical to an existing entry

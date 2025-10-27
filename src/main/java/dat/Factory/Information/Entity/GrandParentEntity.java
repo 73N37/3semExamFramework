@@ -8,30 +8,28 @@ import dat.Factory.Information.UserType;
 @jakarta.persistence.Table(name = "grandparent")                                                                        // Assigns table-name: grandparent
 public class GrandParentEntity extends BaseEntity
 {
-    @jakarta.persistence.Id                                                                                             // Marks this field as the primary key for JPA entity (em.find)
-    @jakarta.persistence.GeneratedValue(strategy = jakarta.persistence.GenerationType.IDENTITY)                         // Uses database for (increment) primary key generation
     @jakarta.persistence.Column(name        = "grandparent_id",                                                         // Assigns column-name: grandparent_id (for grandparent table)
-            nullable    = false,                                                                    // Enforces that the database entry MUST NEVER be null
-            unique      = true)                                                                     // Enforces that the database entry MUST NEVER be identical to an existing entry
+            nullable    = false,                                                                                        // Enforces that the database entry MUST NEVER be null
+            unique      = true)                                                                                         // Enforces that the database entry MUST NEVER be identical to an existing entry
     private java.io.Serializable id;
 
     @lombok.Setter                                                                                                      // Creates a set-method for this Field
     @jakarta.persistence.Column(name        = "field1",                                                                 // Assigns column-name: field1
-            nullable    = false,                                                                    // Enforces that the database entry MUST NEVER be null
-            unique      = true)                                                                     // Enforces that the database entry MUST NEVER be identical to an existing entry
+            nullable    = false,                                                                                        // Enforces that the database entry MUST NEVER be null
+            unique      = true)                                                                                         // Enforces that the database entry MUST NEVER be identical to an existing entry
     private java.lang.Object field1;
 
     @lombok.Setter                                                                                                      // Creates a set-method for this Field
     @jakarta.persistence.Enumerated(jakarta.persistence.EnumType.STRING)                                                // Persist the Enum as a String (toString) rather than as an Enum
     @jakarta.persistence.Column(name        = "field3",                                                                 // Assigns column-name: field3
-            nullable    = false)                                                                    // Enforces that the database entry MUST NEVER be null
+            nullable    = false)                                                                                        // Enforces that the database entry MUST NEVER be null
     private UserType field3;
 
     @jakarta.persistence.OneToMany( mappedBy= "grandParent",                                                            // Non-owning side of a relation. The owning side is a 'grandParent' Field in ParentEntity
-            fetch   =   jakarta.persistence.FetchType.LAZY,                                     // Fetching data only when the Object (GrandParentEntity) is needed (method-call or variable definition)
-            cascade = { jakarta.persistence.CascadeType.MERGE,                                  // Allows EntityManager operation (merge)
-                    jakarta.persistence.CascadeType.PERSIST,                                // Allows EntityManager operation (persist)
-                    jakarta.persistence.CascadeType.REMOVE})                                // Allows EntityManager operation (remove)
+            fetch   =   jakarta.persistence.FetchType.LAZY,                                                             // Fetching data only when the Object (GrandParentEntity) is needed (method-call or variable definition)
+            cascade = { jakarta.persistence.CascadeType.MERGE,                                                          // Allows EntityManager operation (merge)
+                    jakarta.persistence.CascadeType.PERSIST,                                                            // Allows EntityManager operation (persist)
+                    jakarta.persistence.CascadeType.REMOVE})                                                            // Allows EntityManager operation (remove)
     private java.util.Set<ParentEntity> parentSet = new java.util.HashSet<>();
 
     protected GrandParentEntity(){}                                                                                     // Requirement by JPA
