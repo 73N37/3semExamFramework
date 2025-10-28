@@ -6,4 +6,9 @@ public class DAOException extends dat.Factory.Exception.ApiException
     {
         super( errorType, msg, cause);
     }
+
+    public DAOException(dat.Factory.Exception.ErrorType errorType, String msg)
+    {
+        super(errorType, msg);
+    }
 }

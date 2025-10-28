@@ -1,14 +1,7 @@
 package dat;
 
+import dat.Factory.Information.dat.Factory.Information.DTO;
 import dat.config.ApplicationConfig;
-import dat.controllers.impl.ExceptionController;
-import dat.exceptions.ApiException;
-import dat.exceptions.Message;
-import dat.routes.Routes;
-import io.javalin.Javalin;
-import io.javalin.http.Context;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class Main
 {
@@ -17,8 +10,8 @@ public class Main
     {
         ApplicationConfig.startServer(7070);
 
-        dat.Factory.Information.DTO.BaseDTO dto = new dat.Factory.Information.DTO.BaseDTO(1,1);
-        dat.Factory.Information.Entity.BaseEntity entity = new dat.Factory.Information.BaseMapper.;
+        dat.Factory.Information.DTO.BaseDTO dto = new dat.Factory.Information.DTO.BaseDTO(1);
+        //dat.Factory.Information.Entity.BaseEntity entity = new dat.Factory.Information.BaseMapper;
 
     }
 }

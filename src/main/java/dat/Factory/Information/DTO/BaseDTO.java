@@ -4,17 +4,15 @@ package dat.Factory.Information.DTO;
 public class BaseDTO {
     protected java.io.Serializable id;
 
-    protected java.io.Serializable childId;
-    protected java.io.Serializable parentId;
-    protected java.io.Serializable grandParentId;
-
-    protected java.util.Set<ChildDTO> childSet = new java.util.HashSet<>();
-    protected java.util.Set<ParentDTO> parentSet = new java.util.HashSet<>();
+    protected java.util.Set<java.io.Serializable> childIdSet;
+    protected java.util.Set<java.io.Serializable> parentIdSet;
+    protected java.util.Set<java.io.Serializable> grandParentIdSet;
 
     // ensure collections are never null
-    protected BaseDTO() {
-        this.childSet = new java.util.HashSet<>();
-        this.parentSet = new java.util.HashSet<>();
+    public BaseDTO() {
+        this.childIdSet = new java.util.HashSet<>();
+        this.parentIdSet = new java.util.HashSet<>();
+        this.grandParentIdSet = new java.util.HashSet<>();
     }
 
     // ID-only constructor
@@ -24,23 +22,12 @@ public class BaseDTO {
         this.id = id;
     }
 
-    // childId + parentId
-    public BaseDTO(java.io.Serializable childId,
-                   java.io.Serializable parentId)
+    public BaseDTO(dat.Factory.Information.Entity.BaseEntity entity)
     {
-        this();
-        this.childId = childId;
-        this.parentId = parentId;
+        this(entity.getId());
+        this.childIdSet = entity.getChildIdSet();
+        this.parentIdSet = entity.getParentIdSet();
+        this.grandParentIdSet = entity.getGrandParentIdSet();
     }
 
-    // childId + parentId + grandParentId
-    public BaseDTO(java.io.Serializable childId,
-                   java.io.Serializable parentId,
-                   java.io.Serializable grandParentId)
-    {
-        this();
-        this.childId = childId;
-        this.parentId = parentId;
-        this.grandParentId = grandParentId;
-    }
 }

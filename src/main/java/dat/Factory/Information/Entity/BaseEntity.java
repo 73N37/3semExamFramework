@@ -9,26 +9,40 @@ public class BaseEntity {
     protected java.io.Serializable id;
 
     // relation collections -- concrete mapping annotations remain in concrete subclasses
-    protected java.util.Set<ChildEntity> childSet = new java.util.HashSet<>();
-    protected java.util.Set<ParentEntity> parentSet = new java.util.HashSet<>();
+    protected java.util.Set<java.io.Serializable> childIdSet;
+    protected java.util.Set<java.io.Serializable> parentIdSet;
+    protected java.util.Set<java.io.Serializable> grandParentIdSet;
 
-    protected BaseEntity() {
-        this.childSet = new java.util.HashSet<>();
-        this.parentSet = new java.util.HashSet<>();
+    public BaseEntity() {
+        this.childIdSet = new java.util.HashSet<>();
+        this.parentIdSet = new java.util.HashSet<>();
+        this.grandParentIdSet = new java.util.HashSet<>();
+    }
+
+    public BaseEntity(java.io.Serializable id)
+    {
+        this();
+        this.id = id;
+    }
+
+    public BaseEntity(dat.Factory.Information.DTO.BaseDTO dto)
+    {
+        this(dto.getId());
+        this.childIdSet = dto.getChildIdSet();
+        this.parentIdSet = dto.getParentIdSet();
+        this.grandParentIdSet = dto.getGrandParentIdSet();
     }
 
     // simple helpers to keep bidirectional graph consistent (no conversion logic)
-    public ParentEntity addParent(ParentEntity parent) {
-        if (parent == null) return null;
-        parent.setGrandParent(this instanceof GrandParentEntity ? (GrandParentEntity) this : parent.getGrandParent());
-        this.parentSet.add(parent);
-        return parent;
+    public void addParent(BaseEntity parent)
+            throws dat.Factory.Exception.EntityException
+    {
+
     }
 
-    public ChildEntity addChild(ChildEntity child) {
-        if (child == null) return null;
-        child.setParent(child.getParent() == null ? null : child.getParent());
-        this.childSet.add(child);
-        return child;
+    public void addChild(BaseEntity child)
+            throws dat.Factory.Exception.EntityException
+    {
+
     }
 }

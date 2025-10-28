@@ -48,9 +48,7 @@ public class HibernateConfig {
         configuration.addAnnotatedClass(User.class);
         configuration.addAnnotatedClass(Role.class);
         configuration.addAnnotatedClass(dat.Factory.Information.Entity.BaseEntity.class);
-        configuration.addAnnotatedClass(dat.Factory.Information.Entity.ChildEntity.class);
-        configuration.addAnnotatedClass(dat.Factory.Information.Entity.ParentEntity.class);
-        configuration.addAnnotatedClass(dat.Factory.Information.Entity.GrandParentEntity.class);
+        configuration.addAnnotatedClass(dat.Factory.Information.TestEntity.class);
     }
 
     private static EntityManagerFactory createEMF(boolean forTest) {
