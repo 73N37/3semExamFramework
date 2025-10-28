@@ -13,7 +13,8 @@ public class BaseEntity {
     protected java.util.Set<java.io.Serializable> parentIdSet;
     protected java.util.Set<java.io.Serializable> grandParentIdSet;
 
-    public BaseEntity() {
+    public BaseEntity()
+    {
         this.childIdSet = new java.util.HashSet<>();
         this.parentIdSet = new java.util.HashSet<>();
         this.grandParentIdSet = new java.util.HashSet<>();
