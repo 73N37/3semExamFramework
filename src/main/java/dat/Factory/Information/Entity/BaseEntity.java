@@ -33,15 +33,77 @@ public class BaseEntity {
         this.grandParentIdSet = dto.getGrandParentIdSet();
     }
 
-    // simple helpers to keep bidirectional graph consistent (no conversion logic)
-    public void addParent(BaseEntity parent)
+
+//TODO=======================================[Child}====================================================================
+    public java.io.Serializable addChild(BaseEntity child)
+            throws dat.Factory.Exception.EntityException
+    {
+        if (child.getId() == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.FORBIDDEN,
+                "Id Field in parameter (BaseEntity child) can NOT be null. Since the method retrieves BaseEntity.getId() and adds it to this.childIdSet (addChild(BaseEntity))");
+        childIdSet.add(child.getId());
+        return child.getId();
+    }
+
+    public java.io.Serializable addChild(java.io.Serializable id)
+            throws dat.Factory.Exception.EntityException
+    {
+        if (id == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.FORBIDDEN,
+                "parameter (id) can NOT be null. Since the method adds the id to a this.childIdSet");
+        childIdSet.add(id);
+        return id;
+    }
+
+    public void removeChild(BaseEntity child)
+            throws dat.Factory.Exception.EntityException
+    {
+        
+    }
+
+    public void removeChild(java.io.Serializable id)
+        throws dat.Factory.Exception.EntityException
+    {
+
+    }
+
+//TODO=======================================[Parent}===================================================================
+    public java.io.Serializable addParent(BaseEntity parent)
             throws dat.Factory.Exception.EntityException
     {
 
     }
 
-    public void addChild(BaseEntity child)
-            throws dat.Factory.Exception.EntityException
+    public java.io.Serializable addParent(java.io.Serializable id)
+    {
+
+    }
+
+    public void removeParent(BaseEntity parent)
+    {
+
+    }
+
+    public void removeParent(java.io.Serializable id)
+    {
+
+    }
+
+//TODO=======================================[GrandParent}==============================================================
+    public java.io.Serializable addGrandParent(BaseEntity grandParent)
+    {
+
+    }
+
+    public java.io.Serializable addGrandParent(java.io.Serializable id)
+    {
+
+    }
+
+    public void removeGrandParent(BaseEntity grandParent)
+    {
+
+    }
+
+    public void removeGrandParent(java.io.Serializable id)
     {
 
     }
