@@ -1,40 +1,18 @@
-package dat.Factory.DAO;
+package dat.Factory.Operation.DAO;
 
 
-public abstract class Abstract
+public abstract class Abstract extends dat.Factory.Operation.Operation
 {
     protected final static org.slf4j.Logger                                                       log = org.slf4j.LoggerFactory.getLogger(Abstract.class);
     protected static jakarta.persistence.EntityManagerFactory                                     emf;
-    protected static java.lang.Class<? extends dat.Factory.Information.Entity.BaseEntity>         entityClass;
-    protected static java.lang.Class<? extends dat.Factory.Information.DTO.BaseDTO>               dtoClass;
-    protected static java.lang.Class<? extends java.io.Serializable>                              idClass;
 
     protected Abstract( jakarta.persistence.EntityManagerFactory                                _emf,
                         java.lang.Class<? extends dat.Factory.Information.Entity.BaseEntity>    entityClass,
                         java.lang.Class<? extends dat.Factory.Information.DTO.BaseDTO>          dtoClass,
                         java.lang.Class<? extends java.io.Serializable>                         idClass)
     {
+        super(entityClass, dtoClass, idClass);
         emf                 =   _emf;
-        this.entityClass    =   entityClass;
-        this.dtoClass       =   dtoClass;
-        this.idClass        =   idClass;
-    }
-
-
-    private static java.lang.Class<? extends dat.Factory.Information.Entity.BaseEntity>
-    getEntityClass() {
-        return entityClass;
-    }
-
-    private static java.lang.Class<? extends dat.Factory.Information.DTO.BaseDTO>
-    getDtoClass(){
-        return dtoClass;
-    }
-
-    private static java.lang.Class<? extends java.io.Serializable>
-    getIdClass()
-    {
-        return idClass;
     }
 
     protected static dat.Factory.Information.Entity.BaseEntity
@@ -132,7 +110,6 @@ public abstract class Abstract
                     "An error happen while trying to update a database entry by a primary-key",e);
         }
     }
-
 
     protected static
     void deleteId(java.lang.Class<? extends java.io.Serializable> id)

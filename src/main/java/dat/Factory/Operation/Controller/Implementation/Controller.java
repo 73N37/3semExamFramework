@@ -1,17 +1,19 @@
-package dat.Factory.Controller.Implementation;
+package dat.Factory.Operation.Controller.Implementation;
 
+
+import dat.Factory.Operation.Operation;
 
 public abstract class Controller<   Entity  extends dat.Factory.Information.Entity.BaseEntity,
                                     DTO     extends dat.Factory.Information.DTO.BaseDTO,
                                     ID      extends java.io.Serializable>
-    extends dat.Factory.Operation
+    extends Operation
 {
-    protected final dat.Factory.DAO.Abstract dao;
+    protected final dat.Factory.Operation.DAO.Abstract dao;
     
     public Controller()
     {
         jakarta.persistence.EntityManagerFactory emf = dat.config.HibernateConfig.getEntityManagerFactory();
-        this.dao = dat.Factory.DAO.Implementation.DAO.getInstance(emf, Entity, );
+        this.dao = dat.Factory.Operation.DAO.Implementation.DAO.getInstance(emf, getEntityClass(), getDtoClass(), getIdClass());
     }
     
 

@@ -1,17 +1,11 @@
-package dat.Factory.DAO.Implementation;
+package dat.Factory.Operation.DAO.Implementation;
 
-import dat.Factory.Information.dat.Factory.Information.DTO;
 
-public class DAO extends dat.Factory.DAO.Abstract
+public class DAO extends dat.Factory.Operation.DAO.Abstract
 {
     private final static org.slf4j.Logger                                                   log = org.slf4j.LoggerFactory.getLogger(DAO.class);
     private static DAO                                                                      instance;
 
-//    private static jakarta.persistence.EntityManagerFactory                                 emf;
-//    private static java.lang.Class<? extends dat.Factory.Information.Entity.BaseEntity>     entityClass;
-//    private static java.lang.Class<? extends dat.Factory.Information.DTO.BaseDTO>           dtoClass;
-//    private static java.lang.Class<? extends java.io.Serializable>                          idClass;
-//
     private DAO(    jakarta.persistence.EntityManagerFactory                                _emf,
                     java.lang.Class<? extends dat.Factory.Information.Entity.BaseEntity>    entityClass,
                     java.lang.Class<? extends dat.Factory.Information.DTO.BaseDTO>          dtoClass,
@@ -35,7 +29,7 @@ public class DAO extends dat.Factory.DAO.Abstract
     public static class Access{
         public Access(){}
 
-        public dat.Factory.DAO.Implementation.DAO
+        public dat.Factory.Operation.DAO.Implementation.DAO
         getInstance(    jakarta.persistence.EntityManagerFactory                                emf,
                         java.lang.Class<? extends dat.Factory.Information.Entity.BaseEntity>  entityClass,
                         java.lang.Class<? extends dat.Factory.Information.DTO.BaseDTO>        dtoClass,

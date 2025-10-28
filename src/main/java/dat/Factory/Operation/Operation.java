@@ -1,14 +1,19 @@
-package dat.Factory;
+package dat.Factory.Operation;
 
-@lombok.Getter
 public abstract class Operation
 {
     protected static jakarta.persistence.EntityManagerFactory                               emf;
+    @lombok.Getter
     protected static dat.Factory.Information.Entity.BaseEntity                              entity;
+    @lombok.Getter
     protected static java.lang.Class<? extends dat.Factory.Information.Entity.BaseEntity>   entityClass;
+    @lombok.Getter
     protected static dat.Factory.Information.DTO.BaseDTO                                    dto;
+    @lombok.Getter
     protected static java.lang.Class<? extends dat.Factory.Information.DTO.BaseDTO>         dtoClass;
+    @lombok.Getter
     protected static java.io.Serializable                                                   id;
+    @lombok.Getter
     protected static java.lang.Class<? extends java.io.Serializable>                        idClass;
 
     protected Operation()

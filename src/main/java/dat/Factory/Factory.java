@@ -10,9 +10,9 @@ public class Factory
     protected java.lang.Class<? extends java.io.Serializable>                                           idClass;
     protected dat.Factory.Factory                                                                       instance;
     protected jakarta.persistence.EntityManagerFactory                                                  emf;
-    protected dat.Factory.DAO.Implementation.DAO                                                        dao;
-    protected dat.Factory.Controller.Implementation.Controller                                          controller;
-    protected dat.Factory.Route.Implementation.Route                                                    route;
+    protected dat.Factory.Operation.DAO.Implementation.DAO                                                        dao;
+    protected dat.Factory.Operation.Controller.Implementation.Controller                                          controller;
+    protected dat.Factory.Operation.Route.Implementation.Route                                                    route;
 
     public Factory getInstance(jakarta.persistence.EntityManagerFactory                                 _emf,
                                java.lang.Class<? extends dat.Factory.Information.Entity.BaseEntity>     entityClass,
@@ -43,42 +43,42 @@ public class Factory
         log.debug("Assigning idClass to Factory");
         this.idClass            = idClass;
         log.debug("Creating and assigning an instance of DAO based on the 4 previously assigned Fields in Factory");
-        this.dao                = new dat.Factory.DAO.Implementation.DAO.Access().getInstance(_emf, entityClass, dtoClass, idClass);
+        this.dao                = new dat.Factory.Operation.DAO.Implementation.DAO.Access().getInstance(_emf, entityClass, dtoClass, idClass);
         log.debug("Creating and assigning an instance of Controller based on the DAO instance");
-        this.controller         = new dat.Factory.Controller.Implementation.Controller(dao);
+        this.controller         = new dat.Factory.Operation.Controller.Implementation.Controller(dao);
         log.debug("Creating and assigning an instance of Route based on the Controller instance");
-        this.route              = new dat.Factory.Route.Implementation.Route(controller);
+        this.route              = new dat.Factory.Operation.Route.Implementation.Route(controller);
     }
 
 //TODO===========================================[DAO methods]==========================================================
-    protected dat.Factory.DAO.Implementation.DAO
+    protected dat.Factory.Operation.DAO.Implementation.DAO
     getDAO()
     {
         return this.dao;
     }
 
     protected void
-    setDAO(dat.Factory.DAO.Implementation.DAO dao){this.dao = dao;}
+    setDAO(dat.Factory.Operation.DAO.Implementation.DAO dao){this.dao = dao;}
 
 //TODO===========================================[Controller methods]===================================================
-    protected dat.Factory.Controller.Implementation.Controller
+    protected dat.Factory.Operation.Controller.Implementation.Controller
     getController()
     {
         return this.controller;
     }
 
     protected void
-    setController(dat.Factory.Controller.Implementation.Controller controller){this.controller = controller;}
+    setController(dat.Factory.Operation.Controller.Implementation.Controller controller){this.controller = controller;}
 
 //TODO===========================================[Route methods]========================================================
-    protected dat.Factory.Route.Implementation.Route
+    protected dat.Factory.Operation.Route.Implementation.Route
     getRoute()
     {
         return this.route;
     }
 
     protected void
-    setRoute(dat.Factory.Route.Implementation.Route route) {this.route = route;}
+    setRoute(dat.Factory.Operation.Route.Implementation.Route route) {this.route = route;}
 
 //TODO===========================================[Class methods]==========================================================
     protected java.lang.Class<? extends dat.Factory.Information.Entity.BaseEntity>
