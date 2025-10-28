@@ -1,6 +1,5 @@
 package dat;
 
-import dat.Factory.Information.dat.Factory.Information.DTO;
 import dat.config.ApplicationConfig;
 
 public class Main
@@ -11,7 +10,6 @@ public class Main
         ApplicationConfig.startServer(7070);
 
         dat.Factory.Information.DTO.BaseDTO dto = new dat.Factory.Information.DTO.BaseDTO(1);
-        //dat.Factory.Information.Entity.BaseEntity entity = new dat.Factory.Information.BaseMapper;
 
     }
 }

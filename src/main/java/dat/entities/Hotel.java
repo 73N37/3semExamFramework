@@ -34,7 +34,7 @@ public class Hotel {
     @Column(name = "hotel_type", nullable = false)
     private HotelType hotelType;
 
-    @OneToMany(mappedBy = "hotel", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "hotel", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Set<Room> rooms = new HashSet<>();
 
     public Hotel(String hotelName, String hotelAddress, HotelType hotelType) {

@@ -6,7 +6,20 @@ public class ErrorResponse {
     private String errorId;
     private String timestamp;
 
-    public ErrorResponse(int status, String message, String errorId, String timestamp) {
+    public ErrorResponse
+            (
+                    int status,
+
+                    @org.jetbrains.annotations.NotNull
+                    String message,
+
+                    @org.jetbrains.annotations.NotNull
+                    String errorId,
+
+                    @org.jetbrains.annotations.NotNull
+                    String timestamp
+            )
+    {
         this.status = status;
         this.message = message;
         this.errorId = errorId;

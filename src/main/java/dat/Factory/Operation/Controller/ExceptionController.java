@@ -11,7 +11,15 @@ import dat.Factory.Exception.ApiException;
 public class ExceptionController {
     private static final Logger LOGGER = LoggerFactory.getLogger(ExceptionController.class);
 
-    public void apiExceptionHandler(ApiException e, Context ctx) {
+    public void apiExceptionHandler
+            (
+                    @org.jetbrains.annotations.NotNull
+                    ApiException e,
+
+                    @org.jetbrains.annotations.NotNull
+                    Context ctx
+            )
+    {
         String requestInfo = attributeOrDash(ctx, "requestInfo");
         int status = safeStatus(e.getStatusCode());
         String message = safeMessage(e.getMessage());
@@ -23,7 +31,15 @@ public class ExceptionController {
         ctx.json(new ErrorResponse(status, message, errorId, Instant.now().toString()));
     }
 
-    public void exceptionHandler(Exception e, Context ctx) {
+    public void exceptionHandler
+            (
+                    @org.jetbrains.annotations.NotNull
+                    Exception e,
+
+                    @org.jetbrains.annotations.NotNull
+                    Context ctx
+            )
+    {
         String requestInfo = attributeOrDash(ctx, "requestInfo");
         int status = 500;
         String message = safeMessage(e.getMessage(), "Internal Server Error");
@@ -35,20 +51,45 @@ public class ExceptionController {
         ctx.json(new ErrorResponse(status, message, errorId, Instant.now().toString()));
     }
 
-    private String attributeOrDash(Context ctx, String name) {
+    private String attributeOrDash
+            (
+                    @org.jetbrains.annotations.NotNull
+                    Context ctx,
+
+                    @org.jetbrains.annotations.NotNull
+                    String name
+            )
+    {
         Object attr = ctx.attribute(name);
         return attr != null ? attr.toString() : "-";
     }
 
-    private int safeStatus(int code) {
+    private int safeStatus
+            (
+                    int code
+            )
+    {
         return (code >= 100 && code < 600) ? code : 500;
     }
 
-    private String safeMessage(String msg) {
+    private String safeMessage
+            (
+                    @org.jetbrains.annotations.NotNull
+                    String msg
+            )
+    {
         return safeMessage(msg, "Unexpected error");
     }
 
-    private String safeMessage(String msg, String fallback) {
+    private String safeMessage
+            (
+                    @org.jetbrains.annotations.NotNull
+                    String msg,
+
+                    @org.jetbrains.annotations.NotNull
+                    String fallback
+            )
+    {
         return (msg != null && !msg.trim().isEmpty()) ? msg : fallback;
     }
 }

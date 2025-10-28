@@ -35,7 +35,7 @@ public class User implements Serializable, ISecurityUser {
     private String password;
 
     @JoinTable(name = "user_roles", joinColumns = {@JoinColumn(name = "user_name", referencedColumnName = "username")}, inverseJoinColumns = {@JoinColumn(name = "role_name", referencedColumnName = "name")})
-    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Set<Role> roles = new HashSet<>();
 
     public Set<String> getRolesAsStrings() {

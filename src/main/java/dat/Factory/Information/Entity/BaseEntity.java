@@ -20,13 +20,21 @@ public class BaseEntity {
         this.grandParentIdSet = new java.util.HashSet<>();
     }
 
-    public BaseEntity(java.io.Serializable id)
+    public BaseEntity
+            (
+                    @org.jetbrains.annotations.NotNull
+                    java.io.Serializable id
+            )
     {
         this();
         this.id = id;
     }
 
-    public BaseEntity(dat.Factory.Information.DTO.BaseDTO dto)
+    public BaseEntity
+            (
+                    @org.jetbrains.annotations.NotNull
+                    dat.Factory.Information.DTO.BaseDTO dto
+            )
     {
         this(dto.getId());
         this.childIdSet = dto.getChildIdSet();
@@ -36,7 +44,11 @@ public class BaseEntity {
 
 
 //TODO=======================================[Child}====================================================================
-    public java.io.Serializable addChild(BaseEntity child)
+    public java.io.Serializable addChild
+    (
+            @org.jetbrains.annotations.NotNull
+            BaseEntity child
+    )
             throws dat.Factory.Exception.EntityException
     {
         if (child.getId() == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.FORBIDDEN,
@@ -45,7 +57,11 @@ public class BaseEntity {
         return child.getId();
     }
 
-    public java.io.Serializable addChild(java.io.Serializable id)
+    public java.io.Serializable addChild
+            (
+                    @org.jetbrains.annotations.NotNull
+                    java.io.Serializable id
+            )
             throws dat.Factory.Exception.EntityException
     {
         if (id == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.FORBIDDEN,
@@ -54,7 +70,11 @@ public class BaseEntity {
         return id;
     }
 
-    public void removeChild(BaseEntity child)
+    public void removeChild
+            (
+                    @org.jetbrains.annotations.NotNull
+                    BaseEntity child
+            )
             throws dat.Factory.Exception.EntityException
     {
         for (java.io.Serializable id : this.childIdSet)
@@ -64,7 +84,11 @@ public class BaseEntity {
         throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.NOT_FOUND, "Could not find a data-entry with the same id as child parameter (removeChild(BaseEntity))");
     }
 
-    public void removeChild(java.io.Serializable _id)
+    public void removeChild
+            (
+                    @org.jetbrains.annotations.NotNull
+                    java.io.Serializable _id
+            )
         throws dat.Factory.Exception.EntityException
     {
         for (java.io.Serializable id : this.childIdSet)
@@ -75,7 +99,11 @@ public class BaseEntity {
     }
 
 //TODO=======================================[Parent}===================================================================
-    public java.io.Serializable addParent(BaseEntity parent)
+    public java.io.Serializable addParent
+    (
+            @org.jetbrains.annotations.NotNull
+            BaseEntity parent
+    )
             throws dat.Factory.Exception.EntityException
     {
         if (parent.getId() == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.FORBIDDEN,
@@ -84,7 +112,11 @@ public class BaseEntity {
         return parent.getId();
     }
 
-    public java.io.Serializable addParent(java.io.Serializable id)
+    public java.io.Serializable addParent
+            (
+                    @org.jetbrains.annotations.NotNull
+                    java.io.Serializable id
+            )
             throws dat.Factory.Exception.EntityException
     {
         if (id == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.FORBIDDEN,
@@ -93,7 +125,11 @@ public class BaseEntity {
         return id;
     }
 
-    public void removeParent(BaseEntity parent)
+    public void removeParent
+            (
+                    @org.jetbrains.annotations.NotNull
+                    BaseEntity parent
+            )
             throws dat.Factory.Exception.EntityException
     {
         for (java.io.Serializable id : this.parentIdSet)
@@ -104,7 +140,11 @@ public class BaseEntity {
                 "Could not find a data-entry with the same id as parent parameter (removeParent(BaseEntity))");
     }
 
-    public void removeParent(java.io.Serializable _id)
+    public void removeParent
+            (
+                    @org.jetbrains.annotations.NotNull
+                    java.io.Serializable _id
+            )
             throws dat.Factory.Exception.EntityException
     {
         {
@@ -117,7 +157,11 @@ public class BaseEntity {
     }
 
 //TODO=======================================[GrandParent}==============================================================
-    public java.io.Serializable addGrandParent(BaseEntity grandParent)
+    public java.io.Serializable addGrandParent
+    (
+            @org.jetbrains.annotations.NotNull
+            BaseEntity grandParent
+    )
             throws dat.Factory.Exception.EntityException
     {
         if (grandParent.getId() == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.FORBIDDEN,
@@ -126,7 +170,11 @@ public class BaseEntity {
         return grandParent.getId();
     }
 
-    public java.io.Serializable addGrandParent(java.io.Serializable id)
+    public java.io.Serializable addGrandParent
+    (
+            @org.jetbrains.annotations.NotNull
+            java.io.Serializable id
+    )
             throws dat.Factory.Exception.EntityException
     {
         if (id == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.FORBIDDEN,
@@ -135,7 +183,11 @@ public class BaseEntity {
         return id;
     }
 
-    public void removeGrandParent(BaseEntity grandParent)
+    public void removeGrandParent
+            (
+                    @org.jetbrains.annotations.NotNull
+                    BaseEntity grandParent
+            )
             throws dat.Factory.Exception.EntityException
     {
         for (java.io.Serializable id : this.grandParentIdSet)
@@ -146,7 +198,11 @@ public class BaseEntity {
                 "Could not find a data-entry with the same id as parent parameter (removeGrandParent(BaseEntity))");
     }
 
-    public void removeGrandParent(java.io.Serializable _id)
+    public void removeGrandParent
+            (
+                    @org.jetbrains.annotations.NotNull
+                    java.io.Serializable _id
+            )
             throws dat.Factory.Exception.EntityException
     {
         {

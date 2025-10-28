@@ -1,47 +1,15 @@
 package dat.Factory.Operation.Controller.Implementation;
 
+import dat.Factory.Factory;
 
-import dat.Factory.Operation.Operation;
-
-public abstract class Controller<   DTO     extends dat.Factory.Information.DTO.BaseDTO,
-                                    ID      extends java.io.Serializable>
-    extends Operation
+public class Controller
+    extends dat.Factory.Operation.Controller.Abstract
 {
-    protected final dat.Factory.Operation.DAO.Abstract dao;
-    
+    protected static org.slf4j.Logger   log = org.slf4j.LoggerFactory.getLogger(Controller.class);
+
     public Controller()
     {
-        //jakarta.persistence.EntityManagerFactory emf = dat.config.HibernateConfig.getEntityManagerFactory();
-        this.dao = dat.Factory.Operation.DAO.Implementation.DAO.getInstance(emf, getEntityClass(), getDtoClass(), getIdClass());
-    }
-    
-
-    public void get(io.javalin.http.Context ctx) {
-        
-    }
-
-
-    public void getAll(io.javalin.http.Context ctx) {
-
-    }
-
-
-    public void put(io.javalin.http.Context ctx) {
-
-    }
-
-
-    public void patch(io.javalin.http.Context ctx) {
-
-    }
-
-
-    public boolean validatePrimaryKey(ID id) {
-        return false;
-    }
-
-
-    public DTO validateEntity(io.javalin.http.Context ctx) {
-        return null;
+        super(getEntity(), getDto());
+        log.debug("Instantiated dat.Factory.Operation.Controller.Implementation.Controller");
     }
 }

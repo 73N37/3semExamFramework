@@ -16,13 +16,15 @@ public class BaseDTO {
     }
 
     // ID-only constructor
-    public BaseDTO(java.io.Serializable id)
+    public BaseDTO(@org.jetbrains.annotations.NotNull
+                   java.io.Serializable id)
     {
         this();
         this.id = id;
     }
 
-    public BaseDTO(dat.Factory.Information.Entity.BaseEntity entity)
+    public BaseDTO(@org.jetbrains.annotations.NotNull
+                   dat.Factory.Information.Entity.BaseEntity entity)
     {
         this(entity.getId());
         this.childIdSet = entity.getChildIdSet();

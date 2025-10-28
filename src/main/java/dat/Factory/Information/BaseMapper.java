@@ -1,8 +1,6 @@
 package dat.Factory.Information;
 
 
-//import dat.Factory.Information.Entity.GrandParentEntity;
-
 public final class BaseMapper {
     private static BaseMapper instance;
 
@@ -29,7 +27,11 @@ public final class BaseMapper {
 
 //TODO=============================================[DTO]================================================================
     public static dat.Factory.Information.DTO.BaseDTO
-    toBaseDTO(dat.Factory.Information.Entity.BaseEntity entity)
+    toBaseDTO
+    (
+            @org.jetbrains.annotations.NotNull
+            dat.Factory.Information.Entity.BaseEntity entity
+    )
             throws dat.Factory.Exception.DTOException
     {
         if (entity == null) throw new dat.Factory.Exception.DTOException(dat.Factory.Exception.ErrorType.FORBIDDEN, "parameter (entity) is NOT allowed to be null (toBaseDTO)");
@@ -43,8 +45,25 @@ public final class BaseMapper {
         }
     }
 
+    public static java.util.Set<dat.Factory.Information.DTO.BaseDTO>
+    toBaseDTOSet
+            (
+                    @org.jetbrains.annotations.NotNull
+                    java.util.Set<dat.Factory.Information.Entity.BaseEntity> entities
+            )
+            throws dat.Factory.Exception.DTOException
+    {
+        if (entities.isEmpty()) throw new dat.Factory.Exception.DTOException(dat.Factory.Exception.ErrorType.BAD_REQUEST,
+                "parameter (entities) is NOT allowed to be empty (toBaseDTOSet)");
+        return new java.util.HashSet(entities.stream().map(entity -> toBaseDTO(entity)).toList());
+    }
+
     public static java.lang.Class<? extends dat.Factory.Information.DTO.BaseDTO>
-    toBaseDtoClass(java.lang.Class<? extends dat.Factory.Information.Entity.BaseEntity> entityClass)
+    toBaseDtoClass
+            (
+                    @org.jetbrains.annotations.NotNull
+                    java.lang.Class<? extends dat.Factory.Information.Entity.BaseEntity> entityClass
+            )
             throws dat.Factory.Exception.DTOException
     {
         if (entityClass == null)
@@ -90,7 +109,11 @@ public final class BaseMapper {
     }
 
     public static dat.Factory.Information.DTO.BaseDTO
-    instantiateDtoClass(java.lang.Class<? extends dat.Factory.Information.DTO.BaseDTO> dtoClass)
+    instantiateDtoClass
+            (
+                    @org.jetbrains.annotations.NotNull
+                    java.lang.Class<? extends dat.Factory.Information.DTO.BaseDTO> dtoClass
+            )
             throws dat.Factory.Exception.DTOException
     {
         if (dtoClass == null) throw new dat.Factory.Exception.DTOException(dat.Factory.Exception.ErrorType.BAD_REQUEST,
@@ -118,7 +141,11 @@ public final class BaseMapper {
     //TODO=============================================[Entity]=========================================================
 
     public static dat.Factory.Information.Entity.BaseEntity
-    toBaseEntity(dat.Factory.Information.DTO.BaseDTO dto)
+    toBaseEntity
+            (
+                    @org.jetbrains.annotations.NotNull
+                    dat.Factory.Information.DTO.BaseDTO dto
+            )
             throws dat.Factory.Exception.EntityException
     {
         if (dto == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.FORBIDDEN, "parameter (dto) is NOT allowed to be null");
@@ -132,9 +159,25 @@ public final class BaseMapper {
         }
     }
 
+    public static java.util.Set<dat.Factory.Information.Entity.BaseEntity>
+    toBaseEntitySet
+            (
+                    @org.jetbrains.annotations.NotNull
+                    java.util.Set<dat.Factory.Information.DTO.BaseDTO> dtos
+            )
+        throws dat.Factory.Exception.EntityException
+    {
+        if (dtos.isEmpty()) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.BAD_REQUEST,
+                "parameter (dtos) is not allowed to be empty (toBaseEntitySSet)");
+        return new java.util.HashSet(dtos.stream().map(dto -> toBaseEntity(dto)).toList());
+    }
 
     public static java.lang.Class<? extends dat.Factory.Information.Entity.BaseEntity>
-    toBaseEntityClass(java.lang.Class<? extends dat.Factory.Information.DTO.BaseDTO> dtoClass)
+    toBaseEntityClass
+            (
+                    @org.jetbrains.annotations.NotNull
+                    java.lang.Class<? extends dat.Factory.Information.DTO.BaseDTO> dtoClass
+            )
             throws dat.Factory.Exception.EntityException
     {
         if (dtoClass == null)
@@ -176,7 +219,11 @@ public final class BaseMapper {
     }
 
     public static dat.Factory.Information.Entity.BaseEntity
-    instantiateEntityClass(java.lang.Class<? extends dat.Factory.Information.Entity.BaseEntity> entityClass)
+    instantiateEntityClass
+            (
+                    @org.jetbrains.annotations.NotNull
+                    java.lang.Class<? extends dat.Factory.Information.Entity.BaseEntity> entityClass
+            )
             throws dat.Factory.Exception.EntityException
     {
         if (entityClass == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.BAD_REQUEST,
