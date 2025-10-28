@@ -3,8 +3,7 @@ package dat.Factory.Operation.Controller.Implementation;
 
 import dat.Factory.Operation.Operation;
 
-public abstract class Controller<   Entity  extends dat.Factory.Information.Entity.BaseEntity,
-                                    DTO     extends dat.Factory.Information.DTO.BaseDTO,
+public abstract class Controller<   DTO     extends dat.Factory.Information.DTO.BaseDTO,
                                     ID      extends java.io.Serializable>
     extends Operation
 {
@@ -12,7 +11,7 @@ public abstract class Controller<   Entity  extends dat.Factory.Information.Enti
     
     public Controller()
     {
-        jakarta.persistence.EntityManagerFactory emf = dat.config.HibernateConfig.getEntityManagerFactory();
+        //jakarta.persistence.EntityManagerFactory emf = dat.config.HibernateConfig.getEntityManagerFactory();
         this.dao = dat.Factory.Operation.DAO.Implementation.DAO.getInstance(emf, getEntityClass(), getDtoClass(), getIdClass());
     }
     
