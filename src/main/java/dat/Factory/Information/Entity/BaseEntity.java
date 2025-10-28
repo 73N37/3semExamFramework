@@ -84,6 +84,7 @@ public class BaseEntity {
     }
 
     public java.io.Serializable addParent(java.io.Serializable id)
+            throws dat.Factory.Exception.EntityException
     {
         if (id == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.FORBIDDEN,
                 "parameter (id) can NOT be null. Since the method adds the id to a this.parentIdSet (addParent(Serializable))");
@@ -92,6 +93,7 @@ public class BaseEntity {
     }
 
     public void removeParent(BaseEntity parent)
+            throws dat.Factory.Exception.EntityException
     {
         for (java.io.Serializable id : this.parentIdSet)
         {
@@ -102,6 +104,7 @@ public class BaseEntity {
     }
 
     public void removeParent(java.io.Serializable _id)
+            throws dat.Factory.Exception.EntityException
     {
         {
             for (java.io.Serializable id : this.parentIdSet)
@@ -114,6 +117,7 @@ public class BaseEntity {
 
 //TODO=======================================[GrandParent}==============================================================
     public java.io.Serializable addGrandParent(BaseEntity grandParent)
+            throws dat.Factory.Exception.EntityException
     {
         if (grandParent.getId() == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.FORBIDDEN,
                 "Id Field in parameter (BaseEntity parent) can NOT be null. Since the method retrieves BaseEntity.getId() and adds it to this.childIdSet (addGrandParent(BaseEntity))");
@@ -122,6 +126,7 @@ public class BaseEntity {
     }
 
     public java.io.Serializable addGrandParent(java.io.Serializable id)
+            throws dat.Factory.Exception.EntityException
     {
         if (id == null) throw new dat.Factory.Exception.EntityException(dat.Factory.Exception.ErrorType.FORBIDDEN,
                 "parameter (id) can NOT be null. Since the method adds the id to a this.parentIdSet (addGrandParent(Serializable))");
@@ -130,6 +135,7 @@ public class BaseEntity {
     }
 
     public void removeGrandParent(BaseEntity grandParent)
+            throws dat.Factory.Exception.EntityException
     {
         for (java.io.Serializable id : this.grandParentIdSet)
         {
@@ -140,6 +146,7 @@ public class BaseEntity {
     }
 
     public void removeGrandParent(java.io.Serializable _id)
+            throws dat.Factory.Exception.EntityException
     {
         {
             for (java.io.Serializable id : this.grandParentIdSet)
